@@ -1,4 +1,4 @@
-import { QueueWithFade } from "./helpers/FadeQueue";
+import { QueueWithFade } from "../helpers/FadeQueue";
 
 const FRAME_RATE = 30; // In Hz
 const FADE = 250; // In milliseconds
