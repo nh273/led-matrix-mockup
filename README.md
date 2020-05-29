@@ -1,0 +1,1 @@
+Attempting to mock up a 32x8 NeoPixel matrix using P5.js, trying to stay close to the function signatures of FastLED library.
