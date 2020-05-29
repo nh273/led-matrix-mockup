@@ -10,6 +10,7 @@ let s = (sk) => {
 
   sk.setup = () => {
     sk.createCanvas(w * dim, h * dim);
+    sk.setFrameRate(30);
   };
 
   sk.draw = () => {
