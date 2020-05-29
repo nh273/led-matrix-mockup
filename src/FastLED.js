@@ -17,7 +17,7 @@ let s = (sk) => {
     setupLEDs();
     const ledsToTurn = loop();
     for (let [i, color] of ledsToTurn) {
-      led(i, color);
+      turnLed(i, color);
     }
     sk.fill("white");
   };
@@ -31,7 +31,7 @@ let s = (sk) => {
     }
   }
 
-  function led(index, color) {
+  function turnLed(index, color) {
     /* Turn on LED index with color (R, G, B)
     Designed to closely mimic how Arduino FastLED library controls LEDs*/
     sk.fill(...color);
