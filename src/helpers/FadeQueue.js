@@ -2,7 +2,7 @@ export class QueueWithFade {
   /* A Queue that you can push LEDs to and it will handle the fading
     At each call of loop(), (a) new LED(s) can be pushed to the queue,
     and the method step() should be called once to step the queue forward */
-  constructor(frame_rate, fade) {
+  constructor(frame_rate = 30, fade = 250) {
     // The longer the queue, the longer each LED will stay on
     this.queue = Array(Math.floor(frame_rate / (1000 / fade)));
   }
@@ -12,7 +12,7 @@ export class QueueWithFade {
   }
 
   _fadeColor(c) {
-    const fadeStep = 10;
+    const fadeStep = 10; // MAGIC NUMBER don't set too large or color will dull
     return Math.max(0, c - fadeStep);
   }
 
