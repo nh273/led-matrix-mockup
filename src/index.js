@@ -4,7 +4,7 @@ function HelloWorld() {
   const div = document.createElement("div");
   const h1 = document.createElement("h1");
 
-  const h1Text = document.createTextNode("Hello World");
+  const h1Text = document.createTextNode("LED Matrix mock-up demo");
 
   div.className = "main";
   h1.appendChild(h1Text);

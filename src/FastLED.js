@@ -1,4 +1,5 @@
 import * as p5 from "p5";
+import { loop } from "animation";
 
 let s = (sk) => {
   const w = 32;
@@ -13,6 +14,10 @@ let s = (sk) => {
 
   sk.draw = () => {
     setupLEDs();
+    const ledsToTurn = loop();
+    for (let [i, color] of ledsToTurn) {
+      led(i, color);
+    }
   };
 
   function setupLEDs() {
@@ -23,16 +28,16 @@ let s = (sk) => {
       }
     }
   }
+
+  function led(index, color) {
+    /* Turn on LED index with color (R, G, B)
+    Designed to closely mimic how Arduino FastLED library controls LEDs*/
+    sk.fill(color);
+    const j = Math.floor(index / w); // Row number is index / n rows
+    const i = index % w; // Col number is the remainder of index / n rows
+    sk.square(i * dim, j * dim, side - 1);
+    sk.fill((255, 255, 255));
+  }
 };
 
-export function leds(index, color) {
-  /* Turn on LED index with color (R, G, B)
-  Designed to closely mimic how Arduino FastLED library controls LEDs*/
-  sk.fill(color);
-  const j = Math.floor(index / w); // Row number is index / n rows
-  const i = index % w; // Col number is the remainder of index / n rows
-  sk.square(i * dim, j * dim, side - 1);
-  sk.fill((255, 255, 255));
-}
-
-const P5 = new p5(s);
+const base = new p5(s);
