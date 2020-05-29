@@ -4,7 +4,7 @@ import { loop } from "animation";
 let s = (sk) => {
   const w = 32;
   const h = 8;
-  const dim = 50; // dimension of a square (incl. padding)
+  const dim = 35; // dimension of a square (incl. padding)
   const pad = 5;
   const side = dim - pad * 2; // dim of a LED (excl. padding)
 
