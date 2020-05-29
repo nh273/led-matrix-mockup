@@ -1,5 +1,5 @@
 import * as p5 from "p5";
-import { loop } from "./animations/blinkWithFade";
+import { loop } from "./animations/mg";
 
 let s = (sk) => {
   const w = 32;
