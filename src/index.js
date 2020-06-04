@@ -1,5 +1,6 @@
 import "./FastLED";
 import * as designer from "./designer/patternDesigner";
+import "./style/main.css";
 
 function HelloWorld() {
   // "title" div with a h1 Title
@@ -29,6 +30,10 @@ function HelloWorld() {
   const d3div = document.createElement("div");
   d3div.setAttribute("id", "d3-div");
   document.body.appendChild(d3div);
+
+  const arrArea = document.createElement("div");
+  arrArea.id = "selection-array-area";
+  document.body.appendChild(arrArea);
 
   designer.main();
 }

@@ -1,0 +1,6 @@
+#selection-array-area {
+  background-color: bisque;
+  width: 1000px;
+  height: 35px;
+  overflow-x: scroll;
+}
