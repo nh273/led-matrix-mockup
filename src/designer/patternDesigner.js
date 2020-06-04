@@ -77,7 +77,7 @@ export function main() {
     selectArr.sort(d3.ascending);
 
     // re-add element
-    const arrText = document.createTextNode("{" + selectArr + "}");
+    const arrText = document.createTextNode(selectArr);
     arrArea.appendChild(arrText);
   }
 
