@@ -22,11 +22,27 @@ let s = (sk) => {
     sk.fill("white");
   };
 
+  function _boustro(i, j) {
+    /* Given row i & column j, return x & y coords assuming a
+    boustrophedon layout starting from top left & beginning with going down
+    the column */
+
+    // LEDs going down first
+    // i = row number, j = col number
+
+    const square_x = j * dim;
+    const square_y = j % 2 ? i * dim : (h - i - 1) * dim;
+
+    return { square_x: square_x, square_y: square_y };
+  }
+
   function setupLEDs() {
-    /* Set up a matrix of 32x8 square LEDs */
-    for (let i = 0; i < w; i++) {
-      for (let j = 0; j < h; j++) {
-        sk.square(i * dim, j * dim, side);
+    /* Set up a matrix of 32x8 square LEDs
+    In boustrophedon manner */
+    for (let i = 0; i < h; i++) {
+      for (let j = 0; j < w; j++) {
+        const { square_x, square_y } = _boustro(i, j);
+        sk.square(square_x, square_y, side);
       }
     }
   }
@@ -35,9 +51,10 @@ let s = (sk) => {
     /* Turn on LED index with color (R, G, B)
     Designed to closely mimic how Arduino FastLED library controls LEDs*/
     sk.fill(...color);
-    const j = Math.floor(index / w); // Row number is index / n rows
-    const i = index % w; // Col number is the remainder of index / n rows
-    sk.square(i * dim, j * dim, side - 1);
+    const i = Math.floor(index / w); // Row number is index / n rows
+    const j = index % w; // Col number is the remainder of index / n rows
+    const { square_x, square_y } = _boustro(i, j);
+    sk.square(square_x, square_y, side - 1);
   }
 };
 
