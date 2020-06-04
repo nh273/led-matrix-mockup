@@ -1,8 +1,6 @@
 import * as d3 from "d3";
 import { w, h, dim, pad, side, _boustro } from "../helpers/helpers";
-import { sortBy } from "async";
-
-console.log("loading module");
+import { createLoader } from "./patternLoader";
 
 export function main() {
   const lightBlue = "#B5D3E7";
@@ -84,4 +82,5 @@ export function main() {
   }
 
   redrawArr(selectArr);
+  createLoader();
 }
