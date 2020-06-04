@@ -1,8 +1,11 @@
 import { patterns } from "../params/patterns";
+import { lightBlue } from "../helpers/helpers";
 import * as d3 from "d3";
 
-export function createLoader() {
+export function createLoader(callback) {
+  /* Create one button to load each pattern that is imported */
   const buttonArea = document.createElement("div");
+  buttonArea.id = "pattern-load-button-area";
   document.body.appendChild(buttonArea);
   for (let patt of patterns) {
     let butt = document.createElement("button");
@@ -15,6 +18,7 @@ export function createLoader() {
     butt.addEventListener("click", (e) => {
       let arr = e.target.value.split(",");
       handleLoaderButtonClick(arr);
+      callback(arr);
     });
   }
 }
@@ -28,4 +32,29 @@ function handleLoaderButtonClick(pattern) {
     squares[p].class = "design-square filled";
     squares[p].querySelector("rect").setAttribute("fill", "blue");
   }
+}
+
+export function createClear(callback) {
+  /* Create a button to clear all the design squares */
+  let buttArea = document.getElementById("pattern-load-button-area");
+  let butt = document.createElement("button");
+  butt.id = "clear-button";
+  buttArea.appendChild(butt);
+
+  let buttText = document.createTextNode("clear");
+  butt.appendChild(buttText);
+
+  butt.addEventListener("click", (e) => {
+    let squares = document
+      .getElementById("d3-div")
+      .getElementsByClassName("design-square");
+
+    for (let sq of squares) {
+      sq.class = "design-square unfilled";
+      sq.querySelector("rect").setAttribute("fill", lightBlue);
+    }
+
+    // callback to clear the array text
+    callback();
+  });
 }

@@ -3,6 +3,7 @@ export const h = 8;
 export const dim = 35; // dimension of a square (incl. padding)
 export const pad = 5;
 export const side = dim - pad * 2; // dim of a LED (excl. padding)
+export const lightBlue = "#B5D3E7";
 
 export function _boustro(index) {
   /* Given index, return row & col i & j coords assuming a

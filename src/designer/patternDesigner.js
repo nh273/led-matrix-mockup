@@ -1,9 +1,8 @@
 import * as d3 from "d3";
-import { w, h, dim, pad, side, _boustro } from "../helpers/helpers";
-import { createLoader } from "./patternLoader";
+import { w, h, dim, pad, side, lightBlue, _boustro } from "../helpers/helpers";
+import { createLoader, createClear } from "./patternLoader";
 
 export function main() {
-  const lightBlue = "#B5D3E7";
   let svg = d3
     .select("#d3-div")
     .append("svg")
@@ -43,7 +42,7 @@ export function main() {
     .attr("fill", "orange")
     .attr("font-size", 13.5)
     .attr("font-weight", 700);
-  //prettier-ignore
+
   let selectArr = [];
 
   function handleClick(d, i) {
@@ -82,5 +81,14 @@ export function main() {
   }
 
   redrawArr(selectArr);
-  createLoader();
+  createLoader((pattern) => {
+    redrawArr(pattern);
+  });
+  // createClear is appending on element created in createLoader
+  // so should be called later
+  createClear(() => {
+    console.log("calling back");
+    selectArr = [];
+    redrawArr(selectArr);
+  });
 }
