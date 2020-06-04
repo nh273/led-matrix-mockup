@@ -22,27 +22,31 @@ let s = (sk) => {
     sk.fill("white");
   };
 
-  function _boustro(i, j) {
-    /* Given row i & column j, return x & y coords assuming a
+  function _boustro(index) {
+    /* Given index, return row & col i & j coords assuming a
     boustrophedon layout starting from top left & beginning with going down
-    the column */
+    the column.  */
 
     // LEDs going down first
     // i = row number, j = col number
 
-    const square_x = j * dim;
-    const square_y = j % 2 ? i * dim : (h - i - 1) * dim;
+    const j = Math.floor(index / h); // col index = index / number of rows
 
-    return { square_x: square_x, square_y: square_y };
+    // If it's columns 0, 2, 4, etc then the order is normal (top to bottom)
+    // Then row number is index
+    // else the order is reversed (bottom to top)
+    const rem = index % h;
+    const i = j % 2 ? h - rem - 1 : rem;
+
+    return { i: i, j: j };
   }
 
   function setupLEDs() {
     /* Set up a matrix of 32x8 square LEDs
-    In boustrophedon manner */
-    for (let i = 0; i < h; i++) {
-      for (let j = 0; j < w; j++) {
-        const { square_x, square_y } = _boustro(i, j);
-        sk.square(square_x, square_y, side);
+    We don't care that it's in boustro at this point */
+    for (let i = 0; i < w; i++) {
+      for (let j = 0; j < h; j++) {
+        sk.square(i * dim, j * dim, side);
       }
     }
   }
@@ -51,10 +55,9 @@ let s = (sk) => {
     /* Turn on LED index with color (R, G, B)
     Designed to closely mimic how Arduino FastLED library controls LEDs*/
     sk.fill(...color);
-    const i = Math.floor(index / w); // Row number is index / n rows
-    const j = index % w; // Col number is the remainder of index / n rows
-    const { square_x, square_y } = _boustro(i, j);
-    sk.square(square_x, square_y, side - 1);
+    const { i, j } = _boustro(index);
+    //console.log(index, i, j);
+    sk.square(j * dim, i * dim, side - 1);
   }
 };
 
