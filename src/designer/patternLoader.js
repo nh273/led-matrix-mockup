@@ -1,6 +1,5 @@
 import { patterns } from "../params/patterns";
 import { lightBlue } from "../helpers/helpers";
-import * as d3 from "d3";
 
 export function createLoader(callback) {
   /* Create one button to load each pattern that is imported */
@@ -30,7 +29,7 @@ function handleLoaderButtonClick(pattern) {
     .getElementsByClassName("design-square");
 
   for (let p of pattern) {
-    squares[p].class = "design-square filled";
+    squares[p].setAttribute("class", "design-square filled");
     squares[p].querySelector("rect").setAttribute("fill", "blue");
   }
 }
@@ -51,7 +50,7 @@ export function createClear(callback) {
       .getElementsByClassName("design-square");
 
     for (let sq of squares) {
-      sq.class = "design-square unfilled";
+      sq.setAttribute("class", "design-square unfilled");
       sq.querySelector("rect").setAttribute("fill", lightBlue);
     }
 

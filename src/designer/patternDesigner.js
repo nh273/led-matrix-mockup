@@ -82,13 +82,13 @@ export function main() {
   }
 
   redrawArr(selectArr);
-  createLoader((pattern) => {
+  createLoader(function (pattern) {
     selectArr = pattern;
     redrawArr(pattern);
   });
   // createClear is appending on element created in createLoader
   // so should be called later
-  createClear(() => {
+  createClear(function () {
     selectArr = [];
     redrawArr(selectArr);
   });
