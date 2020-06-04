@@ -87,7 +87,6 @@ export function main() {
   // createClear is appending on element created in createLoader
   // so should be called later
   createClear(() => {
-    console.log("calling back");
     selectArr = [];
     redrawArr(selectArr);
   });
