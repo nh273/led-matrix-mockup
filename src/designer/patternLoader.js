@@ -44,17 +44,19 @@ export function createClear(callback) {
   let buttText = document.createTextNode("clear");
   butt.appendChild(buttText);
 
-  butt.addEventListener("click", (e) => {
-    let squares = document
-      .getElementById("d3-div")
-      .getElementsByClassName("design-square");
+  butt.addEventListener("click", () => clear(callback));
+}
 
-    for (let sq of squares) {
-      sq.setAttribute("class", "design-square unfilled");
-      sq.querySelector("rect").setAttribute("fill", lightBlue);
-    }
+function clear(callback) {
+  let squares = document
+    .getElementById("d3-div")
+    .getElementsByClassName("design-square");
 
-    // callback to clear the array text
-    callback();
-  });
+  for (let sq of squares) {
+    sq.setAttribute("class", "design-square unfilled");
+    sq.querySelector("rect").setAttribute("fill", lightBlue);
+  }
+
+  // callback to clear the array text
+  callback();
 }
