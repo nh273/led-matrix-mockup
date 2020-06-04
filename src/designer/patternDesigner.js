@@ -17,8 +17,11 @@ export function main() {
     .selectAll(".design-square")
     .data(d3.range(w * h))
     .enter()
+    .append("g")
+    .attr("class", "design-square");
+
+  grid
     .append("rect")
-    .attr("class", "design-square")
     .attr("x", (d) => {
       return _boustro(d).j * dim;
     })
@@ -27,6 +30,20 @@ export function main() {
     })
     .attr("width", side)
     .attr("height", side)
-    .attr("fill", "blue")
+    .attr("fill", "#B5D3E7")
     .attr("stroke", "black");
+
+  grid
+    .append("text")
+    .text((d, i) => i)
+    .attr("x", (d) => {
+      return _boustro(d).j * dim + side / 2;
+    })
+    .attr("y", (d) => {
+      return _boustro(d).i * dim + dim / 2;
+    })
+    .style("text-anchor", "middle")
+    .attr("fill", "orange")
+    .attr("font-size", 13.5)
+    .attr("font-weight", 700);
 }
