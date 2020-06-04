@@ -46,7 +46,7 @@ export function main() {
     .attr("font-size", 13.5)
     .attr("font-weight", 700);
   //prettier-ignore
-  let selectArr = [66,67,68,75,76,77,80,81,82,83,84,85,86,89,90,91,92,93,94,95,96,97,98,99,100,101,102,107,108,109,114,115,116,145,153,154,157,163,164,165,171,172,178,180,181,185,190];
+  let selectArr = [];
 
   function handleClick(d, i) {
     let selection = d3.select(this);
