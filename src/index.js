@@ -1,15 +1,36 @@
 import "./FastLED";
+import * as designer from "./designer/patternDesigner";
 
 function HelloWorld() {
-  const div = document.createElement("div");
+  // "title" div with a h1 Title
+  const titleDiv = document.createElement("div");
+  titleDiv.className = "title-div";
+  document.body.appendChild(titleDiv);
+
+  // Add title to title div
   const h1 = document.createElement("h1");
-
+  titleDiv.appendChild(h1);
   const h1Text = document.createTextNode("LED Matrix mock-up demo");
-
-  div.className = "main";
   h1.appendChild(h1Text);
-  document.body.appendChild(div);
-  div.appendChild(h1);
+
+  const p5div = document.createElement("div");
+  p5div.setAttribute("id", "p5-div");
+  document.body.appendChild(p5div);
+
+  const designDiv = document.createElement("div");
+  designDiv.id = "design-div";
+  document.body.appendChild(designDiv);
+
+  const prompt = document.createTextNode("Design the pattern here");
+  const h2 = document.createElement("h2");
+  designDiv.appendChild(h2);
+  h2.appendChild(prompt);
+
+  const d3div = document.createElement("div");
+  d3div.setAttribute("id", "d3-div");
+  document.body.appendChild(d3div);
+
+  designer.main();
 }
 
 HelloWorld();
