@@ -1,6 +1,6 @@
 import * as p5 from "p5";
 import { w, h, dim, pad, side, _boustro } from "./helpers/helpers";
-import { loop } from "./animations/mg";
+import { loop } from "./animations/solidPattern";
 
 let s = (sk) => {
   sk.setup = () => {

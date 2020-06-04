@@ -66,7 +66,6 @@ export function main() {
   grid.on("click", handleClick);
 
   function redrawArr(selectArr) {
-    console.log(selectArr);
     // removing old element
     let arrArea = document.getElementById("selection-array-area");
     while (arrArea.firstChild) {
