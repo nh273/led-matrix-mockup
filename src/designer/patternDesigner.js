@@ -66,6 +66,7 @@ export function main() {
   grid.on("click", handleClick);
 
   function redrawArr(selectArr) {
+    console.log(selectArr);
     // removing old element
     let arrArea = document.getElementById("selection-array-area");
     while (arrArea.firstChild) {
@@ -82,7 +83,7 @@ export function main() {
 
   redrawArr(selectArr);
   createLoader((pattern) => {
-    selectArr = [pattern];
+    selectArr = pattern;
     redrawArr(pattern);
   });
   // createClear is appending on element created in createLoader

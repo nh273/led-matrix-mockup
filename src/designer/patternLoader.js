@@ -17,6 +17,7 @@ export function createLoader(callback) {
 
     butt.addEventListener("click", (e) => {
       let arr = e.target.value.split(",");
+      arr = arr.map((elem) => +elem);
       handleLoaderButtonClick(arr);
       callback(arr);
     });
